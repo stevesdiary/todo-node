@@ -1,9 +1,10 @@
-import express, {Express, Request, Response } from 'express';
+import express, {Express } from 'express';
 import dotenv from 'dotenv';
 import { Task } from './src/tasks/tasks.entity';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import { DataSource } from 'typeorm';
+import { tasksRouter } from './src/tasks/tasks.router';
 const app: Express = express();
 dotenv.config();
 app.use(bodyParser.json());
@@ -22,9 +23,9 @@ export const AppDataSource = new DataSource( {
 });
 
 
-app.get('/', (req: Request, res: Response) => {
-   res.send("Express + Typescript Server");
-})
+// app.get('/', (req: Request, res: Response) => {
+//    res.send("Express + Typescript Server");
+// })
 
 AppDataSource.initialize()
    .then(() => {
@@ -35,4 +36,4 @@ AppDataSource.initialize()
    console.error( 'Error during DataSource initialization', err)
    })
 
-
+app.use('/', tasksRouter);
