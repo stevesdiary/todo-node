@@ -43,9 +43,7 @@ export const updateValidator = [
       .trim()
       .isString()
       .withMessage('The id needs to be a string of uuid format'),
-   body('status')
-      .isEmpty()
-      .withMessage('Status is required')      
+   body('status')      
       .trim()
       .isIn([Status.todo, Status.inProgress, Status.completed])
       .withMessage('Status needs to be "todo", "in progress" or "completed"')
