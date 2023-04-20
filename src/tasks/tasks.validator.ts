@@ -16,14 +16,21 @@ export const createValidator: ValidationChain[] = [
       .trim().isString()
       .withMessage('Date needs to be a valid date format'),
    body('description')
+      .isEmpty()
+      .withMessage('Description is required')
       .trim()
       .isString()
       .withMessage('Description needs to be in text format'),
    body('priority')
+      .isEmpty()
+      .withMessage('Priority is required')
       .trim()
       .isIn([Priority.normal, Priority.high, Priority.low])
-      .withMessage('Priority needs to be normal, high or low.'),
+      .withMessage('Priority needs to be "normal", "high" or "low".'),
    body('status')
+      .isEmpty()
+      .withMessage('Status is required')      
       .trim()
       .isIn([Status.todo, Status.inProgress, Status.completed])
+      .withMessage('Status needs to be "todo", "in progress" or "completed"')
 ];
