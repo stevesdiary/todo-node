@@ -22,11 +22,6 @@ export const AppDataSource = new DataSource( {
    synchronize: true,
 });
 
-
-// app.get('/', (req: Request, res: Response) => {
-//    res.send("Express + Typescript Server");
-// })
-
 AppDataSource.initialize()
    .then(() => {
    app.listen(port);
